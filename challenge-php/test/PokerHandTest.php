@@ -5,24 +5,22 @@ namespace PokerHand;
 use PHPUnit\Framework\TestCase;
 
 // play the hand
-$hands_array["As Ks Qs Js 10s"] = "Royal Flush";
-$hands_array["Ah As 10c 7d 6s"] = "One Pair";
-$hands_array["Kh Kc 3s 3h 2d"] = "Two Pair";
-$hands_array["Kh Qh 6h 2h 9h"] = "Flush";
-$hands_array["Jc 10c 9c 8c 7c"] = "Straight Flush";
-$hands_array["5c 5h 5d 5s Ah"] = "Four Of A Kind";
-$hands_array["6s 6h 6d Kc Kh"] = "Full House";
-$hands_array["10d 9h 8c 7s 6c"] = "Straight";
-$hands_array["Qd Qc Qs 7s 6c"] = "Three Of A Kind";
-$hands_array["Kh Qh 7s 4s 3h"] = "High Card";
+$hands_array[0] = "As Ks Qs Js 10s";
+$hands_array[1] = "Ah As 10c 7d 6s";
+$hands_array[2] = "Kh Kc 3s 3h 2d";
+$hands_array[3] = "Kh Qh 6h 2h 9h";
+$hands_array[4] = "Jc 10c 9c 8c 7c";
+$hands_array[5] = "5c 5h 5d 5s Ah";
+$hands_array[6] = "6s 6h 6d Kc Kh";
+$hands_array[7] = "10d 9h 8c 7s 6c";
+$hands_array[8] = "Qd Qc Qs 7s 6c";
+$hands_array[9] = "Kh Qh 7s 4s 3h";
 
-
+// loop through and check
 foreach ($hands_array as $key=>$val)  {
-	$class_pokerhandclass = new PokerHand($key);
-	$rolled = $class_pokerhandclass->input;
-	if ($rolled == $key) {
-		print "Congratulations!! You rolled a ".$key." \n and that gives you a ".$val."\n\n";
-	}
+	$class_pokerhandclass = new PokerHand($val);
+	$type = $class_pokerhandclass->getRank();
+	print "Congratulations!! You rolled a ".$val." \n and that gives you a ".$type."\n\n";
 }
 
 
