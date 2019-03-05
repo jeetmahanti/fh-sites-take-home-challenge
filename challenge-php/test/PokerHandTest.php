@@ -4,6 +4,29 @@ namespace PokerHand;
 
 use PHPUnit\Framework\TestCase;
 
+// play the hand
+$hands_array["As Ks Qs Js 10s"] = "Royal Flush";
+$hands_array["Ah As 10c 7d 6s"] = "One Pair";
+$hands_array["Kh Kc 3s 3h 2d"] = "Two Pair";
+$hands_array["Kh Qh 6h 2h 9h"] = "Flush";
+$hands_array["Jc 10c 9c 8c 7c"] = "Straight Flush";
+$hands_array["5c 5h 5d 5s Ah"] = "Four Of A Kind";
+$hands_array["6s 6h 6d Kc Kh"] = "Full House";
+$hands_array["10d 9h 8c 7s 6c"] = "Straight";
+$hands_array["Qd Qc Qs 7s 6c"] = "Three Of A Kind";
+$hands_array["Kh Qh 7s 4s 3h"] = "High Card";
+
+
+foreach ($hands_array as $key=>$val)  {
+	$class_pokerhandclass = new PokerHand($key);
+	$rolled = $class_pokerhandclass->input;
+	if ($rolled == $key) {
+		print "Congratulations!! You rolled a ".$key." \n and that gives you a ".$val."\n\n";
+	}
+}
+
+
+// class poker hand test
 class PokerHandTest extends TestCase
 {
     /**
@@ -11,8 +34,8 @@ class PokerHandTest extends TestCase
      */
     public function itCanRankARoyalFlush()
     {
-        $hand = new PokerHand('As Ks Qs Js 10s');
-        $this->assertEquals('Royal Flush', $hand->getRank());
+       $hand = new PokerHand('As Ks Qs Js 10s');
+       $this->assertEquals('Royal Flush', $hand->getRank());		
     }
 
     /**
@@ -20,6 +43,7 @@ class PokerHandTest extends TestCase
      */
     public function itCanRankAPair()
     {
+		
         $hand = new PokerHand('Ah As 10c 7d 6s');
         $this->assertEquals('One Pair', $hand->getRank());
     }
