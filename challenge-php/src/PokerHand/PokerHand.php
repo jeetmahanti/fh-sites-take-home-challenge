@@ -6,8 +6,7 @@ class PokerHand
 {
     public function __construct($hand)
     {   
-	    $this->input = $hand;
-		$this->getRank();
+		$this->input = $hand;
     }
 
     public function getRank()
